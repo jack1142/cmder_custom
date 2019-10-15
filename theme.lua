@@ -17,7 +17,7 @@ function lambda_prompt_filter()
     
     local prompt = "\x1b[37;44m {cwd} {git}{hg} {env}\n\x1b[90;40m{lamb} \x1b[0m"
     local new_value = string.gsub(prompt, "{cwd}", cwd)
-    clink.prompt.value = string.gsub(new_value, "{lamb}", ">_")
+    clink.prompt.value = string.gsub(new_value, "{lamb}", "λ")
 end
 
 --- copied from clink.lua
