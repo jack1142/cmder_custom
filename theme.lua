@@ -165,7 +165,7 @@ function colorful_git_prompt_filter()
     if env then
         clink.prompt.value = string.gsub(clink.prompt.value, "{git}", "\x1b[34;46m"..arrowSymbol)
     else
-        clink.prompt.value = string.gsub(clink.prompt.value, "{git}", "\x1b[34;40m"..arrowSymbol)
+        clink.prompt.value = string.gsub(clink.prompt.value, "{git}", "\x1b[0;34m"..arrowSymbol)
     end
     return false
 end
@@ -184,13 +184,13 @@ function colorful_env_prompt_filter()
                 if env then
                     beforeColor = "\x1b[32;46m"..arrowSymbol --cleen
                 else
-                    beforeColor = "\x1b[32;40m"..arrowSymbol --cleen
+                    beforeColor = "\x1b[0;32m"..arrowSymbol --cleen
                 end
             else
                 if env then
                     beforeColor = "\x1b[33;46m"..arrowSymbol --dirty
                 else
-                    beforeColor = "\x1b[33;40m"..arrowSymbol --dirty
+                    beforeColor = "\x1b[0;33m"..arrowSymbol --dirty
                 end
             end
         end
