@@ -197,7 +197,7 @@ function colorful_env_prompt_filter()
     end
 
     if env then
-        clink.prompt.value = string.gsub(clink.prompt.value, "{env}", beforeColor.."\x1b[37;46m "..env.." \x1b[36;49m"..arrowSymbol.."\x1b[0m")
+        clink.prompt.value = string.gsub(clink.prompt.value, "{env}", beforeColor.."\x1b[30;46m "..env.." \x1b[36;49m"..arrowSymbol.."\x1b[0m")
     else
         clink.prompt.value = string.gsub(clink.prompt.value, "{env}", beforeColor)
     end
