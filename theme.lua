@@ -10,16 +10,18 @@ local env
 
 -- Resets the prompt 
 function lambda_prompt_filter()
-    local cwd = clink.get_cwd()
-    cwd = string.gsub(cwd, clink.get_env("home"), "~")
+    local full_cwd = clink.get_cwd()
+    local cwd = string.gsub(full_cwd, clink.get_env("home"), "~")
 
     -- env = clink.prompt.value:match('%[33;22;49m%((.+)%).+%[39;22;49m')
     -- I don't know much about these lua patterns but it seems to work
     env = clink.prompt.value:match('%[1;39;40m%((.+)%).+%[0m')
     
-    local prompt = "\x1b[37;44m {cwd} {git}{hg} {env}\n\x1b[90;40m{lamb} \x1b[0m"
-    local new_value = string.gsub(prompt, "{cwd}", cwd)
-    clink.prompt.value = string.gsub(new_value, "{lamb}", "λ")
+    local prompt = "\x1b]9;9;\"{full_cwd}\"\x07\x1b[37;44m {cwd} {git}{hg} {env}\x1b[0m\n\x1b[2m{lamb}\x1b[0m "
+    prompt = string.gsub(prompt, "{full_cwd}", full_cwd)
+    prompt = string.gsub(prompt, "{cwd}", cwd)
+    prompt = string.gsub(prompt, "{lamb}", "λ")
+    clink.prompt.value = prompt
 end
 
 --- copied from clink.lua
